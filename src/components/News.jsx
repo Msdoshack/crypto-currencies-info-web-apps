@@ -18,7 +18,6 @@ const News = ({ simplified }) => {
   });
 
   const { data } = useGetCryptosQuery(100);
-  console.log(crytoNews);
   if (!crytoNews?.value) return <Loader />;
 
   return (
@@ -37,7 +36,9 @@ const News = ({ simplified }) => {
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
             {data?.data?.coins.map((coin) => (
-              <Option value={coin.name}>{coin.name} </Option>
+              <Option value={coin.name} key={coin.name}>
+                {coin.name}{" "}
+              </Option>
             ))}
           </Select>
         </Col>

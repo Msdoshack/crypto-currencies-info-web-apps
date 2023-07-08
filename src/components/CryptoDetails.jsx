@@ -34,7 +34,6 @@ function CryptoDetails() {
     timePeriod,
   });
   const cryptoDetails = data?.data?.coin;
-  console.log(data);
 
   if (isFetching) return <Loader />;
 
@@ -144,7 +143,7 @@ function CryptoDetails() {
             </p>
           </Col>
           {stats.map(({ icon, title, value }) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={title}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -164,7 +163,7 @@ function CryptoDetails() {
             </p>
           </Col>
           {genericStats.map(({ icon, title, value }) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={title}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -185,8 +184,8 @@ function CryptoDetails() {
           <Title level={3} className="coin-details-heading">
             {cryptoDetails.name} Links
           </Title>
-          {cryptoDetails.links?.map((link) => (
-            <Row className="coin-link" key={link.name}>
+          {cryptoDetails.links?.map((link, i) => (
+            <Row className="coin-link" key={i}>
               <Title level={5} className="link-name">
                 {link.type}
               </Title>

@@ -36,11 +36,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     );
   }
 
-  /*   for (let j = 0; j < coinHistory?.data?.history?.length; j += 1) {
-    coinTimestamp.push(
-      new Date(coinHistory?.data?.history[j].timestamp).toLocaleDateString()
-    );
-  } */
   const data = {
     labels: coinTimestamp.reverse(),
     datasets: [

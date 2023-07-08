@@ -12,7 +12,6 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(cryptos);
 
   useEffect(() => {
     const filteredData = cryptosList?.data?.coins.filter((coin) =>
@@ -37,7 +36,13 @@ const Cryptocurrencies = ({ simplified }) => {
 
       <Row gutter={[32, 32]} className="crpto-card-container">
         {cryptos?.map((currency) => (
-          <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
+          <Col
+            xs={24}
+            sm={12}
+            lg={6}
+            className="crypto-card"
+            key={currency.uuid}
+          >
             <Link to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}, ${currency.name}`}
